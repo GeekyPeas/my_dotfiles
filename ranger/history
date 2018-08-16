@@ -1,0 +1,50 @@
+rename DBM_Engines
+mkdir ML_with_CRN
+rename DeepBoltzMachines
+rename ML_with_CRN
+mkdir Dtreesim_Python
+delete
+rename RBM.py
+searc
+search rub
+search tensorflow
+search nvcc
+open_with 
+touch MNIST_EMCRN.tex
+rename CompactEMCRN
+rename EMCRN_Hybrid
+rename MNIST_EMCRN
+search 20180719_22
+rename CS709 Ganesh 2018 Spring
+rename CS709 Ganesh 2018 Even
+mkdir EE761_ACI_JKN
+mkdir CS747_FILA_SK
+CS721_CT_NL
+mkdir CS721_CT_NL
+CS709_COPT_GR
+mkdir C709_COPT_GR
+CL717_ED_SS
+mkdir CL717_ED_SS
+search 0724_10
+search _11
+rename Steins Gate
+search Golu
+search 24_10
+search 0730_
+search 0729_0
+search 0728_0
+search 0727_0
+search 26_00
+search 0724_11
+search 0724_12
+
+mkdir WordPress_Plugins
+search Lear
+search 
+mkdir EE635_ALA_DP
+rename Photo.jpg
+mkdir public_html
+open_with macs
+open_with emacs
+delete
+search emacs

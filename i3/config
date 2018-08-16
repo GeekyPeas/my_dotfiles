@@ -1,0 +1,159 @@
+set $mod Mod4
+font pango:monospace 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+Right split h
+
+# split in vertical orientation
+bindsym $mod+Down split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen 
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+u floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+u focus mode_toggle
+
+# focus the parent/ child container
+# bindsym $mod+a focus parent
+# bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+mode "change" {
+        # These bindings trigger as soon as you enter the change mode
+	bindsym a workspace 1
+	bindsym s workspace 2
+	bindsym d workspace 3
+	bindsym f workspace 4
+	bindsym g workspace 5
+	bindsym h workspace 6
+	bindsym j workspace 7
+	bindsym k workspace 8
+	bindsym l workspace 9
+	bindsym semicolon workspace 10
+	
+	bindsym Shift+a move container to workspace 1
+	bindsym Shift+s move container to workspace 2
+	bindsym Shift+d move container to workspace 3
+	bindsym Shift+f move container to workspace 4
+	bindsym Shift+g move container to workspace 5
+	bindsym Shift+h move container to workspace 6
+	bindsym Shift+j move container to workspace 7
+	bindsym Shift+k move container to workspace 8
+	bindsym Shift+l move container to workspace 9
+	bindsym Shift+semicolon move container to workspace 10
+
+        bindsym space mode "default"
+        bindsym Return mode "default"	
+}
+
+bindsym $mod+semicolon mode "Change"
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym space mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	position top
+}
+
+#custom key bindings
+bindsym $mod+z exec i3lock -u -d -c 000000
+bindsym $mod+i exec ~/Scripts/Time.sh
+bindsym $mod+Shift+i exec ~/Scripts/Diary.sh
+bindsym $mod+Escape exec ~/Scripts/Touch.sh
+bindsym $mod+space workspace back_and_forth
+bindsym	$mod+x exec "scrot '%Y:%m:%d:%H:%M:%S.jpg' -e 'mv $f ~/'"
+# bindsym $mod+Tab workspace next
+# bindsym $mod+grave workspace prev
+
+
+#startup tasks
+exec xautolock -time 15 -locker 'i3lock -u -d -c 000000'
+exec feh --bg-scale ~/2.jpg
+exec keynav
+exec ~/Scripts/Rec.sh
+exec xbacklight -set 30
+exec dropbox start
+exec xrandr --dpi 140
+exec xrdb ~/.Xresources
+exec nm-applet
+exec xmodmap -e "keycode 135 = Super_R"
+exec xmodmap -e 'clear Lock'
+exec xmodmap -e "keycode 66 = BackSpace"
